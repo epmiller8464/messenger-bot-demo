@@ -1,10 +1,11 @@
+'use strict'
 let express = require('express');
 let router = express.Router();
 let _ = require('lodash')
 let request = require('request')
 /* GET home page. */
 router.get('/', function (req, res, next) {
-    res.render('index', {title: 'Express'});
+    res.render('index', {title: 'Ignite AI'});
 });
 
 router.get('/webhook', function (req, res) {
@@ -76,8 +77,52 @@ function receivedMessage(event) {
 }
 
 
-function sendGenericMessage(senderID) {
+function sendGenericMessage(recipientID) {
+    let messageData = {
+        recipient: {
+            id: recipientID,
+        },
+        message: {
+            attachment: {
+                type: 'template',
+                payload: {
+                    template_type: 'generic',
+                    elements: [{
+                        title: 'rift',
+                        subtitle: 'Next-generation marketing AI',
+                        item_url: process.env.IGNITEAI_URI,
+                        image_url: process.env.IGNITEAI_URI + '/images/ss.png',
+                        buttons: [{
+                            type: 'web_url',
+                            url: process.env.IGNITEAI_URI,
+                            title: 'Open web url'
+                        }, {
+                            type: 'postback',
+                            title: 'Call Postback',
+                            payload: 'Payload for first bubble'
+                        }]
+                    }, {
+                        title: "touch",
+                        subtitle: "Your Hands, Now in Ignite AI",
+                        item_url: process.env.IGNITEAI_URI + '/ignite',
+                        image_url: process.env.IGNITEAI_URI + '/images/ss.png',
+                        buttons: [{
+                            type: "web_url",
+                            item_url: process.env.IGNITEAI_URI + '/ignite',
+                            title: "Open Web URL"
+                        }, {
+                            type: "postback",
+                            title: "Call Postback",
+                            payload: "Payload for second bubble",
+                        }]
+                    }]
+                    
+                }
+            }
+        }
+    };
     
+    callSendAPI(messageData);
 }
 
 function sendTextMessage(recipientID, messageText) {
