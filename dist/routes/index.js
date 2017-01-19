@@ -66,6 +66,9 @@ function receivedMessage(event) {
             case 'generic':
                 sendGenericMessage(senderID, messageText);
                 break;
+            case 'How are you?':
+                sendGenericMessage(senderID, "I am going great and you?");
+                break;
             default:
                 sendTextMessage(senderID, messageText);
                 break;
