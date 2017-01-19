@@ -88,7 +88,8 @@ function sendGenericMessage(recipientId, messageText) {
                         subtitle: "Facebook Marketing A.I. for E-commecre Brands, Made Easy.",
                         // item_url: "https://www.oculus.com/en-us/rift/",
                         item_url: process.env.IGNITEAI_URI,
-                        image_url: process.env.IGNITEAI_URI + 'images/ss.png',
+                        // image_url: process.env.IGNITEAI_URI + 'images/ss.png',
+                        image_url: 'http://ignite-fb-demo.herokuapp.com/images/ss.png',
                         buttons: [{
                             type: "web_url",
                             url: process.env.IGNITEAI_URI,
