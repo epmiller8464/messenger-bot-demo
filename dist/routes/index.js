@@ -34,6 +34,8 @@ router.post('/webhook', function (req, res, next) {
 
                 if (event.message) {
                     receivedMessage(event);
+                } else if (event.postback) {
+                    recievedPostback(event);
                 } else {
                     console.log("Webhook received unkown event: %s", event);
                 }
@@ -148,6 +150,15 @@ function callSendAPI(messageData) {
             console.error(error);
         }
     });
+}
+
+function recievedPostback(event) {
+    var senderID = event.sender.id;
+    var recipientID = event.recipient.id;
+    var timeOfPostback = event.timestamp;
+    var payload = event.postback.payload;
+    console.log("Received postback for user %d and page %d with payload '%s' " + "at %d", senderID, recipientID, payload, timeOfPostback);
+    sendTextMessage(senderID, "Postback celled");
 }
 
 module.exports = router;

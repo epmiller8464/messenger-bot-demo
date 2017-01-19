@@ -34,6 +34,8 @@ router.post('/webhook', (req, res, next) => {
                 
                 if(event.message) {
                     receivedMessage(event)
+                } else if(event.postback) {
+                    recievedPostback(event);
                 } else {
                     console.log("Webhook received unkown event: %s", event)
                 }
@@ -75,7 +77,6 @@ function receivedMessage(event) {
     }
     
 }
-
 
 function sendGenericMessage(recipientID) {
     let messageData = {
@@ -137,7 +138,6 @@ function sendTextMessage(recipientID, messageText) {
     callSendAPI(messageData);
 }
 
-
 function callSendAPI(messageData) {
     
     request({
@@ -158,6 +158,15 @@ function callSendAPI(messageData) {
         }
     })
     
+}
+
+function recievedPostback(event) {
+    let senderID = event.sender.id;
+    let recipientID = event.recipient.id;
+    let timeOfPostback = event.timestamp;
+    let payload = event.postback.payload;
+    console.log("Received postback for user %d and page %d with payload '%s' " + "at %d", senderID, recipientID, payload, timeOfPostback);
+    sendTextMessage(senderID, "Postback celled");
 }
 
 module.exports = router;
