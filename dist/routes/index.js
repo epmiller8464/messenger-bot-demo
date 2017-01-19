@@ -6,6 +6,7 @@ var _ = require('lodash');
 var request = require('request');
 /* GET home page. */
 router.get('/', function (req, res, next) {
+    console.log(process.env.IGNITEAI_URI);
     res.render('index', { title: 'Ignite AI' });
 });
 
@@ -72,50 +73,8 @@ function receivedMessage(event) {
     }
 }
 function sendGenericMessage(recipientId, messageText) {
-    var messageData = {
-        recipient: {
-            id: recipientId
-        },
-        message: {
-            attachment: {
-                type: 'template',
-                payload: {
-                    template_type: 'generic',
-                    elements: [{
-                        title: 'rift',
-                        subtitle: 'Next-generation marketing AI',
-                        item_url: process.env.IGNITEAI_URI,
-                        image_url: process.env.IGNITEAI_URI + '/images/ss.png',
-                        buttons: [{
-                            type: 'web_url',
-                            url: process.env.IGNITEAI_URI,
-                            title: 'Open web url'
-                        }, {
-                            type: 'postback',
-                            title: 'Call Postback',
-                            payload: 'Payload for first bubble'
-                        }]
-                    }, {
-                        title: "touch",
-                        subtitle: "Your Hands, Now in Ignite AI",
-                        item_url: process.env.IGNITEAI_URI + '/ignite',
-                        image_url: process.env.IGNITEAI_URI + '/images/ss.png',
-                        buttons: [{
-                            type: "web_url",
-                            item_url: process.env.IGNITEAI_URI + '/ignite',
-                            title: "Open Web URL"
-                        }, {
-                            type: "postback",
-                            title: "Call Postback",
-                            payload: "Payload for second bubble"
-                        }]
-                    }]
 
-                }
-            }
-        }
-    };
-    /*let messageData = {
+    var messageData = {
         recipient: {
             id: recipientId
         },
@@ -126,9 +85,10 @@ function sendGenericMessage(recipientId, messageText) {
                     template_type: "generic",
                     elements: [{
                         title: "rift",
-                        subtitle: "Next-generation virtual reality",
-                        item_url: "https://www.oculus.com/en-us/rift/",
-                        image_url: "http://messengerdemo.parseapp.com/img/rift.png",
+                        subtitle: "Next-generation marketing AI",
+                        // item_url: "https://www.oculus.com/en-us/rift/",
+                        item_url: process.env.IGNITEAI_URI,
+                        image_url: process.env.IGNITEAI_URI + 'images/ss.png',
                         buttons: [{
                             type: "web_url",
                             url: "https://www.oculus.com/en-us/rift/",
@@ -136,8 +96,8 @@ function sendGenericMessage(recipientId, messageText) {
                         }, {
                             type: "postback",
                             title: "Call Postback",
-                            payload: "Payload for first bubble",
-                        }],
+                            payload: "Payload for first bubble"
+                        }]
                     }, {
                         title: "touch",
                         subtitle: "Your Hands, Now in VR",
@@ -150,13 +110,13 @@ function sendGenericMessage(recipientId, messageText) {
                         }, {
                             type: "postback",
                             title: "Call Postback",
-                            payload: "Payload for second bubble",
+                            payload: "Payload for second bubble"
                         }]
                     }]
                 }
             }
         }
-    };*/
+    };
 
     callSendAPI(messageData);
 }
