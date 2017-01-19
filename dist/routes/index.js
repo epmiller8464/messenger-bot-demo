@@ -91,7 +91,7 @@ function sendGenericMessage(recipientId, messageText) {
                         image_url: process.env.IGNITEAI_URI + 'images/ss.png',
                         buttons: [{
                             type: "web_url",
-                            url: "https://www.oculus.com/en-us/rift/",
+                            url: process.env.IGNITEAI_URI,
                             title: "Open Web URL"
                         }, {
                             type: "postback",
@@ -101,11 +101,11 @@ function sendGenericMessage(recipientId, messageText) {
                     }, {
                         title: "touch",
                         subtitle: "Your Hands, Now in VR",
-                        item_url: "https://www.oculus.com/en-us/touch/",
-                        image_url: "http://messengerdemo.parseapp.com/img/touch.png",
+                        item_url: process.env.IGNITEAI_URI + 'ignite/',
+                        image_url: process.env.IGNITEAI_URI + 'images/ss.png',
                         buttons: [{
                             type: "web_url",
-                            url: "https://www.oculus.com/en-us/touch/",
+                            url: process.env.IGNITEAI_URI + 'ignite/',
                             title: "Open Web URL"
                         }, {
                             type: "postback",
