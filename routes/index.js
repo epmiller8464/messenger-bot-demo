@@ -67,7 +67,7 @@ function receivedMessage(event) {
         
         switch (messageText) {
             case 'generic':
-                sendGenericMessage(senderID);
+                sendGenericMessage(senderID, messageText);
                 break;
             default:
                 sendTextMessage(senderID, messageText);
@@ -77,8 +77,7 @@ function receivedMessage(event) {
     }
     
 }
-
-function sendGenericMessage(recipientID) {
+function sendGenericMessage(recipientId, messageText) {
     // let messageData = {
     //     recipient: {
     //         id: recipientID,
@@ -122,7 +121,7 @@ function sendGenericMessage(recipientID) {
     //         }
     //     }
     // };
-    var messageData = {
+    let messageData = {
         recipient: {
             id: recipientId
         },

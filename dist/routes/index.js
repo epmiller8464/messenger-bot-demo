@@ -63,7 +63,7 @@ function receivedMessage(event) {
 
         switch (messageText) {
             case 'generic':
-                sendGenericMessage(senderID);
+                sendGenericMessage(senderID, messageText);
                 break;
             default:
                 sendTextMessage(senderID, messageText);
@@ -71,8 +71,7 @@ function receivedMessage(event) {
         }
     }
 }
-
-function sendGenericMessage(recipientID) {
+function sendGenericMessage(recipientId, messageText) {
     // let messageData = {
     //     recipient: {
     //         id: recipientID,
@@ -183,9 +182,9 @@ function callSendAPI(messageData) {
         json: messageData
     }, function (error, response, body) {
         if (!error && response.statusCode === 200) {
-            var _recipientId = body.recipient_id;
+            var recipientId = body.recipient_id;
             var messageId = body.message_id;
-            console.log("Successfully sent generic message with id %s to recipient %s", messageId, _recipientId);
+            console.log("Successfully sent generic message with id %s to recipient %s", messageId, recipientId);
         } else {
             console.error('Unable to send message.');
             console.error(response);
