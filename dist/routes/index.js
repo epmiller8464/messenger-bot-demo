@@ -84,8 +84,8 @@ function sendGenericMessage(recipientId, messageText) {
                 payload: {
                     template_type: "generic",
                     elements: [{
-                        title: "rift",
-                        subtitle: "Next-generation marketing AI",
+                        title: "Ignite AI",
+                        subtitle: "Facebook Marketing A.I. for E-commecre Brands, Made Easy.",
                         // item_url: "https://www.oculus.com/en-us/rift/",
                         item_url: process.env.IGNITEAI_URI,
                         image_url: process.env.IGNITEAI_URI + 'images/ss.png',
@@ -99,8 +99,8 @@ function sendGenericMessage(recipientId, messageText) {
                             payload: "Payload for first bubble"
                         }]
                     }, {
-                        title: "touch",
-                        subtitle: "Your Hands, Now in VR",
+                        title: "Ignite AI - Fact of the day",
+                        subtitle: "Grass is green!",
                         item_url: process.env.IGNITEAI_URI + 'ignite/',
                         image_url: process.env.IGNITEAI_URI + 'images/ss.png',
                         buttons: [{
