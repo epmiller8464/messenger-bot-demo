@@ -31,11 +31,11 @@ router.post('/webhook', (req, res, next) => {
             let timeOfEvent = entry.time;
             
             entry.messaging.forEach((event) => {
-                
+                console.log(event)
                 if(event.message) {
                     receivedMessage(event)
                 } else if(event.postback) {
-                    recievedPostback(event);
+                    receivedPostback(event);
                 } else {
                     console.log("Webhook received unkown event: %s", event)
                 }
@@ -202,7 +202,7 @@ function callSendAPI(messageData) {
     
 }
 
-function recievedPostback(event) {
+function receivedPostback(event) {
     let senderID = event.sender.id;
     let recipientID = event.recipient.id;
     let timeOfPostback = event.timestamp;
