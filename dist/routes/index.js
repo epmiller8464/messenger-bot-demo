@@ -73,37 +73,80 @@ function receivedMessage(event) {
 }
 
 function sendGenericMessage(recipientID) {
+    // let messageData = {
+    //     recipient: {
+    //         id: recipientID,
+    //     },
+    //     message: {
+    //         attachment: {
+    //             type: 'template',
+    //             payload: {
+    //                 template_type: 'generic',
+    //                 elements: [{
+    //                     title: 'rift',
+    //                     subtitle: 'Next-generation marketing AI',
+    //                     item_url: process.env.IGNITEAI_URI,
+    //                     image_url: process.env.IGNITEAI_URI + '/images/ss.png',
+    //                     buttons: [{
+    //                         type: 'web_url',
+    //                         url: process.env.IGNITEAI_URI,
+    //                         title: 'Open web url'
+    //                     }, {
+    //                         type: 'postback',
+    //                         title: 'Call Postback',
+    //                         payload: 'Payload for first bubble'
+    //                     }]
+    //                 }, {
+    //                     title: "touch",
+    //                     subtitle: "Your Hands, Now in Ignite AI",
+    //                     item_url: process.env.IGNITEAI_URI + '/ignite',
+    //                     image_url: process.env.IGNITEAI_URI + '/images/ss.png',
+    //                     buttons: [{
+    //                         type: "web_url",
+    //                         item_url: process.env.IGNITEAI_URI + '/ignite',
+    //                         title: "Open Web URL"
+    //                     }, {
+    //                         type: "postback",
+    //                         title: "Call Postback",
+    //                         payload: "Payload for second bubble",
+    //                     }]
+    //                 }]
+    //
+    //             }
+    //         }
+    //     }
+    // };
     var messageData = {
         recipient: {
-            id: recipientID
+            id: recipientId
         },
         message: {
             attachment: {
-                type: 'template',
+                type: "template",
                 payload: {
-                    template_type: 'generic',
+                    template_type: "generic",
                     elements: [{
-                        title: 'rift',
-                        subtitle: 'Next-generation marketing AI',
-                        item_url: process.env.IGNITEAI_URI,
-                        image_url: process.env.IGNITEAI_URI + '/images/ss.png',
+                        title: "rift",
+                        subtitle: "Next-generation virtual reality",
+                        item_url: "https://www.oculus.com/en-us/rift/",
+                        image_url: "http://messengerdemo.parseapp.com/img/rift.png",
                         buttons: [{
-                            type: 'web_url',
-                            url: process.env.IGNITEAI_URI,
-                            title: 'Open web url'
+                            type: "web_url",
+                            url: "https://www.oculus.com/en-us/rift/",
+                            title: "Open Web URL"
                         }, {
-                            type: 'postback',
-                            title: 'Call Postback',
-                            payload: 'Payload for first bubble'
+                            type: "postback",
+                            title: "Call Postback",
+                            payload: "Payload for first bubble"
                         }]
                     }, {
                         title: "touch",
-                        subtitle: "Your Hands, Now in Ignite AI",
-                        item_url: process.env.IGNITEAI_URI + '/ignite',
-                        image_url: process.env.IGNITEAI_URI + '/images/ss.png',
+                        subtitle: "Your Hands, Now in VR",
+                        item_url: "https://www.oculus.com/en-us/touch/",
+                        image_url: "http://messengerdemo.parseapp.com/img/touch.png",
                         buttons: [{
                             type: "web_url",
-                            item_url: process.env.IGNITEAI_URI + '/ignite',
+                            url: "https://www.oculus.com/en-us/touch/",
                             title: "Open Web URL"
                         }, {
                             type: "postback",
@@ -111,7 +154,6 @@ function sendGenericMessage(recipientID) {
                             payload: "Payload for second bubble"
                         }]
                     }]
-
                 }
             }
         }
@@ -141,9 +183,9 @@ function callSendAPI(messageData) {
         json: messageData
     }, function (error, response, body) {
         if (!error && response.statusCode === 200) {
-            var recipientId = body.recipient_id;
+            var _recipientId = body.recipient_id;
             var messageId = body.message_id;
-            console.log("Successfully sent generic message with id %s to recipient %s", messageId, recipientId);
+            console.log("Successfully sent generic message with id %s to recipient %s", messageId, _recipientId);
         } else {
             console.error('Unable to send message.');
             console.error(response);
