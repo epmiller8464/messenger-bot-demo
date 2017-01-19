@@ -87,7 +87,8 @@ function sendGenericMessage(recipientId, messageText) {
                         title: "Ignite AI",
                         subtitle: "Facebook Marketing A.I. for E-commecre Brands, Made Easy.",
                         // item_url: "https://www.oculus.com/en-us/rift/",
-                        item_url: process.env.IGNITEAI_URI,
+                        // item_url: process.env.IGNITEAI_URI,
+                        item_url: 'http://ignite-fb-demo.herokuapp.com/images/ss.png',
                         // image_url: process.env.IGNITEAI_URI + 'images/ss.png',
                         image_url: 'http://ignite-fb-demo.herokuapp.com/images/ss.png',
                         buttons: [{
@@ -102,11 +103,25 @@ function sendGenericMessage(recipientId, messageText) {
                     }, {
                         title: "Ignite AI - Fact of the day",
                         subtitle: "Grass is green!",
-                        item_url: process.env.IGNITEAI_URI + 'ignite/',
+                        item_url: process.env.IGNITEAI_URI + '/ignite/',
                         image_url: process.env.IGNITEAI_URI + 'images/ss.png',
                         buttons: [{
                             type: "web_url",
-                            url: process.env.IGNITEAI_URI + 'ignite/',
+                            url: process.env.IGNITEAI_URI + '/ignite/',
+                            title: "Open Web URL"
+                        }, {
+                            type: "postback",
+                            title: "Call Postback",
+                            payload: "Payload for second bubble"
+                        }]
+                    }, {
+                        title: "Ignite AI - Joke of the day",
+                        subtitle: "some joke",
+                        item_url: process.env.IGNITEAI_URI + '/ignite/',
+                        image_url: process.env.IGNITEAI_URI + 'images/ss.png',
+                        buttons: [{
+                            type: "web_url",
+                            url: process.env.IGNITEAI_URI + '/ignite/',
                             title: "Open Web URL"
                         }, {
                             type: "postback",
