@@ -4,7 +4,7 @@ var router = express.Router();
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-  res.send('Ignite AI coming soon');
+  res.render('index')
 });
 
 module.exports = router;
