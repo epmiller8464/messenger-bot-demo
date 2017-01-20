@@ -93,7 +93,7 @@ function sendGenericMessage(recipientId, messageText) {
                         // item_url: "https://www.oculus.com/en-us/rift/",
                         // item_url: 'http://ignite-fb-demo.herokuapp.com/images/ss.png',
                         item_url: process.env.IGNITEAI_URI,
-                        image_url: process.env.IGNITEAI_URI + 'images/ss.png',
+                        image_url: process.env.IGNITEAI_URI + 'images/logo-black.png',
                         // image_url: 'http://ignite-fb-demo.herokuapp.com/images/ss.png',
                         buttons: [{
                             type: "web_url",
@@ -108,7 +108,7 @@ function sendGenericMessage(recipientId, messageText) {
                         title: "Ignite AI - Fact of the day",
                         subtitle: "Grass is green!",
                         item_url: process.env.IGNITEAI_URI,
-                        image_url: process.env.IGNITEAI_URI + 'images/ss.png',
+                        image_url: process.env.IGNITEAI_URI + 'images/logo-black.png',
                         buttons: [{
                             type: "web_url",
                             url: process.env.IGNITEAI_URI + '/ignite/',
@@ -122,7 +122,7 @@ function sendGenericMessage(recipientId, messageText) {
                         title: "Ignite AI - Joke of the day",
                         subtitle: "some joke",
                         item_url: process.env.IGNITEAI_URI,
-                        image_url: process.env.IGNITEAI_URI + 'images/ss.png',
+                        image_url: process.env.IGNITEAI_URI + 'images/logo-black.png',
                         buttons: [{
                             type: "web_url",
                             url: process.env.IGNITEAI_URI + '/ignite/',
